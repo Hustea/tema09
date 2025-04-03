@@ -11,9 +11,7 @@ public class Ejercicio1 {
 
         rellenarArrayAleatorio(array);
         imprimirArray(array);
-
         System.out.println("Array ordenado:");
-
         arrayOrdenado = convertirArrayEnArrayListConParesOrdenados(array);
         imprimirList(arrayOrdenado);
     }
