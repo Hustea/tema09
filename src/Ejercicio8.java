@@ -15,7 +15,7 @@ public class Ejercicio8 {
 
             switch (opcion) {
                 case 1:
-                    añadirPalabra(scanner, diccionario);
+                    anadirPalabra(scanner, diccionario);
                     break;
                 case 2:
                     modificarPalabra(scanner, diccionario);
@@ -88,7 +88,7 @@ public class Ejercicio8 {
      * @param scanner
      * @param diccionario
      */
-    private static void añadirPalabra(Scanner scanner, Map<String, String> diccionario) {
+    private static void anadirPalabra(Scanner scanner, Map<String, String> diccionario) {
         System.out.print("Introduce la palabra: ");
         String palabra = scanner.nextLine().trim().toLowerCase();
 

@@ -3,7 +3,6 @@ package Ejercicio5;
 import java.time.LocalDate;
 
 public class Ejercicio5 {
-
     public enum IMC {
         PI("Peso insuficiente",Double.MIN_VALUE, 18.45),
         PN("Peso normal",18.5,25),
