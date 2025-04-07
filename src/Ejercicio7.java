@@ -7,7 +7,6 @@ public class Ejercicio7 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Diccionario con las tasas de cambio respecto al euro
         Map<String, Double> tasasCambio = new HashMap<>();
         tasasCambio.put("USD", 1.08);
         tasasCambio.put("GBP", 0.86);
@@ -28,16 +27,12 @@ public class Ejercicio7 {
         boolean continuar = true;
         while (continuar) {
             double euros = leerDouble(scanner, "Introduce la cantidad en euros: ");
-
-            // Validar código de moneda
             String codigo = leerCodigoMoneda(scanner, tasasCambio);
 
-            // Calcular y mostrar resultado
             double tasa = tasasCambio.get(codigo);
             double resultado = euros * tasa;
             System.out.printf("%.2f EUR = %.2f %s\n", euros, resultado, codigo);
 
-            // Preguntar si desea continuar
             continuar = leerConfirmacion(scanner, "¿Quieres realizar otra conversión? (s/n): ");
         }
 
@@ -45,7 +40,12 @@ public class Ejercicio7 {
         System.out.println("¡Gracias por usar el conversor!");
     }
 
-    // Leer número decimal con validación
+    /**
+     * Validar un double
+     * @param scanner
+     * @param mensaje
+     * @return double validado
+     */
     private static double leerDouble(Scanner scanner, String mensaje) {
         double numero = 0;
         boolean valido = false;
@@ -54,7 +54,7 @@ public class Ejercicio7 {
             System.out.print(mensaje);
             try {
                 numero = scanner.nextDouble();
-                scanner.nextLine(); // limpiar buffer
+                scanner.nextLine();
                 if (numero < 0) {
                     System.out.println("Por favor, introduce un número positivo.");
                 } else {
@@ -62,14 +62,19 @@ public class Ejercicio7 {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada no válida. Debes introducir un número.");
-                scanner.nextLine(); // limpiar buffer
+                scanner.nextLine();
             }
         }
 
         return numero;
     }
 
-    // Leer y validar código de moneda
+    /**
+     * validar codigo moneda
+     * @param scanner
+     * @param tasasCambio
+     * @return codigo validado
+     */
     private static String leerCodigoMoneda(Scanner scanner, Map<String, Double> tasasCambio) {
         String codigo = "";
         boolean valido = false;
@@ -89,7 +94,12 @@ public class Ejercicio7 {
         return codigo;
     }
 
-    // Leer confirmación s/n con validación
+    /**
+     * validar confirmacion
+     * @param scanner
+     * @param mensaje
+     * @return confirmacion validada
+     */
     private static boolean leerConfirmacion(Scanner scanner, String mensaje) {
         while (true) {
             System.out.print(mensaje);

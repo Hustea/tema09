@@ -9,14 +9,12 @@ public class Ejercicio6 {
         int opcion;
 
         do {
-            // Mostrar menú
             System.out.println("MENÚ PRINCIPAL");
             System.out.println("==============");
             System.out.println("1. Introducir parejas de palabras.");
             System.out.println("2. Traducir palabras.");
             System.out.println("0. Salir de la aplicación.");
 
-            // Leer opción del usuario con validación
             opcion = leerEnteroConValidación(scanner, "Elige una opción: ");
 
             switch (opcion) {
@@ -59,7 +57,12 @@ public class Ejercicio6 {
         scanner.close();
     }
 
-    // Método auxiliar para leer enteros con validación
+    /**
+     * Metodo para leer enteros acon validacion
+     * @param scanner
+     * @param mensaje
+     * @return numero validado
+     */
     private static int leerEnteroConValidación(Scanner scanner, String mensaje) {
         int numero = -1;
         boolean valido = false;
@@ -68,11 +71,11 @@ public class Ejercicio6 {
             System.out.print(mensaje);
             try {
                 numero = scanner.nextInt();
-                scanner.nextLine(); // Limpiar el buffer
+                scanner.nextLine();
                 valido = true;
             } catch (InputMismatchException e) {
                 System.out.println("Valor no válido. Por favor, introduce un número.");
-                scanner.nextLine(); // Limpiar el buffer para evitar bucle infinito
+                scanner.nextLine();
             }
         }
 

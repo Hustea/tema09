@@ -42,7 +42,9 @@ public class Ejercicio8 {
         scanner.close();
     }
 
-    // Método para mostrar el menú principal
+    /**
+     * Mostrar el menu
+     */
     private static void mostrarMenu() {
         System.out.println("***********************");
         System.out.println("* GESTIÓN DICCIONARIO *");
@@ -56,7 +58,12 @@ public class Ejercicio8 {
         System.out.println("0. Salir");
     }
 
-    // Leer opción numérica con validación
+    /**
+     * validar entero
+     * @param scanner
+     * @param mensaje
+     * @return entero validado
+     */
     private static int leerEnteroConValidacion(Scanner scanner, String mensaje) {
         int numero = -1;
         boolean valido = false;
@@ -65,18 +72,22 @@ public class Ejercicio8 {
             System.out.print(mensaje);
             try {
                 numero = scanner.nextInt();
-                scanner.nextLine(); // limpiar buffer
+                scanner.nextLine();
                 valido = true;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada no válida. Introduce un número.");
-                scanner.nextLine(); // limpiar buffer
+                scanner.nextLine();
             }
         }
 
         return numero;
     }
 
-    // Añadir nueva palabra al diccionario
+    /**
+     *añadir palabras al mapa
+     * @param scanner
+     * @param diccionario
+     */
     private static void añadirPalabra(Scanner scanner, Map<String, String> diccionario) {
         System.out.print("Introduce la palabra: ");
         String palabra = scanner.nextLine().trim().toLowerCase();
@@ -91,7 +102,11 @@ public class Ejercicio8 {
         }
     }
 
-    // Modificar definición de una palabra
+    /**
+     * Modificar palabra del diccionario
+     * @param scanner
+     * @param diccionario
+     */
     private static void modificarPalabra(Scanner scanner, Map<String, String> diccionario) {
         System.out.print("Introduce la palabra a modificar: ");
         String palabra = scanner.nextLine().trim().toLowerCase();
@@ -107,7 +122,11 @@ public class Ejercicio8 {
         }
     }
 
-    // Eliminar palabra del diccionario
+    /**
+     * Eliminar palabras del diccionario
+     * @param scanner
+     * @param diccionario
+     */
     private static void eliminarPalabra(Scanner scanner, Map<String, String> diccionario) {
         System.out.print("Introduce la palabra a eliminar: ");
         String palabra = scanner.nextLine().trim().toLowerCase();
@@ -120,7 +139,11 @@ public class Ejercicio8 {
         }
     }
 
-    // Consultar definición de una palabra
+    /**
+     * Consultar definición de una palabra
+     * @param scanner
+     * @param diccionario
+     */
     private static void consultarPalabra(Scanner scanner, Map<String, String> diccionario) {
         System.out.print("Introduce la palabra a consultar: ");
         String palabra = scanner.nextLine().trim().toLowerCase();
@@ -132,7 +155,10 @@ public class Ejercicio8 {
         }
     }
 
-    // Mostrar todas las palabras del diccionario
+    /**
+     * Mostrar todas las palabras del diccionario
+     * @param diccionario
+     */
     private static void mostrarDiccionario(Map<String, String> diccionario) {
         if (diccionario.isEmpty()) {
             System.out.println("El diccionario está vacío.");
