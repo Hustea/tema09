@@ -1,3 +1,5 @@
+package Ejercicio9;
+
 import java.util.*;
 
 public class Ejercicio9 {
@@ -160,35 +162,35 @@ public class Ejercicio9 {
     private static void jugar(Map<String, String> diccionario, Scanner scanner, List<Puntuacion> puntuaciones) {
         if (diccionario.isEmpty()) {
             System.out.println("El diccionario está vacío. Añade palabras antes de jugar.");
-            return;
-        }
 
-        List<Map.Entry<String, String>> lista = new ArrayList<>(diccionario.entrySet());
-        Collections.shuffle(lista);
+        }else{
+            List<Map.Entry<String, String>> lista = new ArrayList<>(diccionario.entrySet());
+            Collections.shuffle(lista);
 
-        int puntos = 0;
-        for (Map.Entry<String, String> entrada : lista) {
-            System.out.println("¿Qué palabra corresponde a esta definición?");
-            System.out.println("Definición: " + entrada.getValue());
-            System.out.print("Tu respuesta: ");
-            String respuesta = scanner.nextLine().trim().toLowerCase();
+            int puntos = 0;
+            for (Map.Entry<String, String> entrada : lista) {
+                System.out.println("¿Qué palabra corresponde a esta definición?");
+                System.out.println("Definición: " + entrada.getValue());
+                System.out.print("Tu respuesta: ");
+                String respuesta = scanner.nextLine().trim().toLowerCase();
 
-            if (respuesta.equals(entrada.getKey())) {
-                System.out.println("¡Correcto!");
-                puntos++;
-            } else {
-                System.out.println("¡Incorrecto! Era: " + entrada.getKey());
-                break;
+                if (respuesta.equals(entrada.getKey())) {
+                    System.out.println("¡Correcto!");
+                    puntos++;
+                } else {
+                    System.out.println("¡Incorrecto! Era: " + entrada.getKey());
+                    break;
+                }
             }
-        }
 
-        System.out.println("Fin del juego. Tu puntuación: " + puntos);
+            System.out.println("Fin del juego. Tu puntuación: " + puntos);
 
-        if (esMejorPuntuacion(puntos, puntuaciones)) {
-            System.out.print("¡Nueva puntuación destacada! Introduce tu nombre: ");
-            String nombre = scanner.nextLine().trim();
-            puntuaciones.add(new Puntuacion(nombre, puntos));
-            ordenarYLimitarPuntuaciones(puntuaciones);
+            if (esMejorPuntuacion(puntos, puntuaciones)) {
+                System.out.print("¡Nueva puntuación destacada! Introduce tu nombre: ");
+                String nombre = scanner.nextLine().trim();
+                puntuaciones.add(new Puntuacion(nombre, puntos));
+                ordenarYLimitarPuntuaciones(puntuaciones);
+            }
         }
     }
 
@@ -219,24 +221,6 @@ public class Ejercicio9 {
         puntuaciones.sort((a, b) -> Integer.compare(b.getPuntos(), a.getPuntos()));
         if (puntuaciones.size() > 5) {
             puntuaciones.remove(puntuaciones.size() - 1);
-        }
-    }
-
-    static class Puntuacion {
-        private String nombre;
-        private int puntos;
-
-        public Puntuacion(String nombre, int puntos) {
-            this.nombre = nombre;
-            this.puntos = puntos;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public int getPuntos() {
-            return puntos;
         }
     }
 }
